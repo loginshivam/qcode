@@ -28,7 +28,3 @@ testVwap:{
   .qunit.assertEquals[res;expected ; "Vwap calculation"];
  };
 
-
-.qunit.runTests `.vwapTest;
-
-exit 0
