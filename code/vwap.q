@@ -1,13 +1,13 @@
 
-/clientorder:([]id:`long$();version:`int$();sym:`$();time:`timestamp$();side:`$();limit:`float$();start:`timestamp$();end:`timestamp$());
-/markettrade:([]sym:`$();time:`timestamp$();price:`float$();volume:`long$());
 
 // @Function this is used to calculate the condational vwap for client order
 // @Param co - table -  client order table 
 // @Param mt - table -  market trade  table
 // @return - table 
 // @Example 
-
+   // clientorder:([]id:`long$();version:`int$();sym:`$();time:`timestamp$();side:`$();limit:`float$();start:`timestamp$();end:`timestamp$());
+   //markettrade:([]sym:`$();time:`timestamp$();price:`float$();volume:`long$());
+   //.vwap.CalCondVWAP[clientorder;markettrade] 
 .vwap.CalCondVWAP:{[co;mt]
    res:select any differ[first limit ;limit],first sym,start,end,first time by id from co;
    res:select id,sym,{?[x;last y;first y]}'[limit;start],{?[x;last y;first y]}'[limit;end],time from res;
