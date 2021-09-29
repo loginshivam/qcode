@@ -15,6 +15,6 @@
    res:select any differ[first limit ;limit],first sym,start,end,first time by id from co;
    res:select id,sym,{?[x;last y;first y]}'[limit;start],{?[x;last y;first y]}'[limit;end],time from res;
    w:(res[`start];res[`end]);
-   mt:update `p#sym from `sym xasc mt;
+   if[not `p~(meta mt)[`sym;`a];mt:update `p#sym from `sym xasc mt];
    select id,sym,start,end,vwap:price from wj1[w;`sym`time;res;(mt;(wavg;`volume;`price))]
  };
